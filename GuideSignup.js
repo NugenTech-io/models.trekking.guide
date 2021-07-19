@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const GuideSignupSchema = new mongoose.Schema({
   firstName: {
     type: String,
