@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 
 const GuideSchema = new Schema({
@@ -38,12 +39,19 @@ const GuideSchema = new Schema({
   licenseNumber: {
     type: String
   },
-
+  regions: {
+    type: Map,
+    of: String
+  },
+  experience: {
+    type: String
+  },
+  language: {
+    type: Map,
+    of: String
+  }
 }, { timestamps: true });
 GuideSchema.set('autoIndex', false);
 
 // Nextjs issue fix for schema override
 module.exports = mongoose.models.Guide || mongoose.model('Guide', GuideSchema);
-
-// export default mongoose.model('Guide', GuideSchema);
-// module.exports = mongoose.model('Guide', GuideSchema);
