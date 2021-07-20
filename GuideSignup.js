@@ -22,6 +22,10 @@ const GuideSignupSchema = new mongoose.Schema({
     type: Number,
     required: true,
     unique: true
+  },
+  isApproved: {
+    type: Boolean,
+    default: false
   }
 }, { timestamps: true })
 
