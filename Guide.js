@@ -24,7 +24,8 @@ const GuideSchema = new Schema({
   },
   mobileNumber: {
     type: Number,
-    min: [10, 'Must have 10 digits']
+    min: [10, 'Must have 10 digits'],
+    required: [true, 'Please add your mobile number !'],
   },
   isApproved: {
     type: Boolean,
