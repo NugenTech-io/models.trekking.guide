@@ -15,6 +15,13 @@ const GuideSchema = new Schema({
     type: String,
     required: [true, 'Please add your last name !'],
   },
+  email: {
+    type: String,
+    trim: true,
+    lowercase: true,
+    unique: true,
+    required: [true, 'Please add your email !'],
+  },
   mobileNumber: {
     type: Number,
     min: [10, 'Must have 10 digits']
