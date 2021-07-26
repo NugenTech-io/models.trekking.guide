@@ -37,18 +37,20 @@ const GuideSchema = new Schema({
     type: String
   },
   licenseNumber: {
-    type: String
+    type: String,
+    required: [true, 'Please add your license number !'],
   },
   regions: {
-    type: Map,
-    of: String
+    type: String,
+    required: [true, 'Please add your regions !'],
   },
   experience: {
-    type: String
+    type: String,
+    required: [true, 'Please add your experience !'],
   },
   language: {
-    type: Map,
-    of: String
+    type: String,
+    required: [true, 'Please add your language !'],
   }
 }, { timestamps: true });
 GuideSchema.set('autoIndex', false);
