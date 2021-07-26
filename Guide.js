@@ -42,7 +42,7 @@ const GuideSchema = new Schema({
   },
   regions: {
     type: String,
-    required: [true, 'Please add your regions !'],
+    // required: [true, 'Please add your regions !'],
   },
   experience: {
     type: String,
@@ -50,7 +50,7 @@ const GuideSchema = new Schema({
   },
   language: {
     type: String,
-    required: [true, 'Please add your language !'],
+    // required: [true, 'Please add your language !'],
   }
 }, { timestamps: true });
 GuideSchema.set('autoIndex', false);
