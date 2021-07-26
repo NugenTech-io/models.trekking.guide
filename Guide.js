@@ -47,6 +47,10 @@ const GuideSchema = new Schema({
     type: String,
     required: [true, 'Please add your license number !'],
   },
+  licenseExpiryDate: {
+    type: Date,
+    required: [true, 'Please add your license expiry date !'],
+  },
   regions: {
     type: String,
     required: [true, 'Please add your regions !'],
