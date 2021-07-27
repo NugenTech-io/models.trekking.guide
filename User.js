@@ -1,21 +1,46 @@
-import Adapters from "next-auth/adapters"
+const mongoose = require('mongoose');
 
-// Extend the built-in models using class inheritance
-export default class User extends Adapters.TypeORM.Models.User.model {
-  constructor(name, email, image, emailVerified, roles) {
-    super(name, email, image, emailVerified)
-    if (roles) { this.roles = roles}
-  }
-}
+const Schema = mongoose.Schema;
 
-export const UserSchema = {
-  name: "User",
-  target: User,
-  columns: {
-    ...Adapters.TypeORM.Models.User.schema.columns,
-    roles: {
-      type: "varchar",
-      nullable: true
-    },
+const UserSchema = new Schema({
+  userName: {
+    type: String,
+    required: [true, 'You must have a username !'],
+    index: true
   },
-}
+  mobileNumber: {
+    type: Number,
+    min: [10, 'Must have 10 digits']
+  },
+  email: {
+    type: String,
+    required: [true, "Please enter valid email !"],
+    unique: true,
+    trim: true,
+    index: true,
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  role: {
+    type: String,
+    enum: ['guide', 'traveller', 'admin']
+  },
+  reviews: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Review'
+  }],
+  guide: {
+    type: Schema.Types.ObjectId,
+    ref: 'Guide'
+  },
+  traveller: {
+    type: Schema.Types.ObjectId,
+    ref: 'Traveller'
+  }
+}, { timestamps: true });
+UserSchema.set('autoIndex', false);
+
+// Nextjs issue fix for schema override
+module.exports = mongoose.models.User || mongoose.model('User', UserSchema);
