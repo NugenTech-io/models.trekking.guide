@@ -63,6 +63,10 @@ const GuideSchema = new Schema({
   language: {
     type: String,
     required: [true, 'Please add your language !'],
+  },
+  role: {
+    type: String,
+    enum: ['guide', 'traveller', 'admin']
   }
 }, { timestamps: true });
 GuideSchema.set('autoIndex', false);
